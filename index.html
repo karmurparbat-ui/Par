@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ખાનગી અહેવાલ મુદ્દા</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f4f7f6;
+            --hover-color: #e3f2fd;
+            --active-color: #bbdefb;
+        }
+        
+        * { box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: #333;
+        }
+
+        /* Ticker (Marquee) Styling */
+        .ticker-wrap {
+            width: 100%;
+            background-color: #2c3e50;
+            color: #f1c40f;
+            padding: 8px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .ticker-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 20s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        .header-container {
+            background-color: white;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        h2 { margin: 0; color: var(--primary-color); font-size: 24px; }
+        
+        .instructions {
+            text-align: center;
+            padding: 12px;
+            font-size: 15px;
+            color: #155724;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            margin: 15px auto;
+            border-radius: 8px;
+            width: 95%;
+            max-width: 800px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .table-responsive {
+            width: 95%;
+            margin: 0 auto 30px auto;
+            overflow-x: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            /* Smooth scrolling for mobile */
+            -webkit-overflow-scrolling: touch; 
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+        
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        th {
+            background-color: #0056b3;
+            color: white;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        td:first-child { text-align: center; font-weight: bold; background-color: #f8f9fa; }
+        td:nth-child(2) { font-weight: bold; background-color: #f8f9fa; min-width: 150px; }
+
+        /* One-Click Copy Styling */
+        .copyable {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .copyable:hover {
+            background-color: var(--hover-color);
+            transform: scale(1.01);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+        
+        .copyable:active {
+            background-color: var(--active-color);
+            transform: scale(0.98);
+        }
+
+        /* Toast Notification Styling */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #28a745;
+            color: #fff;
+            text-align: center;
+            border-radius: 50px;
+            padding: 14px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s;
+        }
+        
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
+        }
+        
+        /* Tap highlight color removal for mobile */
+        * { -webkit-tap-highlight-color: transparent; }
+
+        @media screen and (max-width: 600px) {
+            h2 { font-size: 20px; }
+            .instructions { font-size: 14px; padding: 10px; width: 90%; }
+            th, td { padding: 10px; font-size: 14px; }
+            .ticker-wrap { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ticker-wrap">
+        <div class="ticker-text">સૌજન્ય : પરબતભાઈ કરમુર - શ્રી કોરાડા વાડી પ્રાથમિક શાળા.</div>
+    </div>
+
+    <div class="header-container">
+        <h2>ખાનગી અહેવાલ મુદ્દા</h2>
+    </div>
+
+    <div class="instructions">
+        ✨ <strong>સૂચના:</strong> નીચેના કોઈપણ લખાણ (બોક્સ) પર <b>માત્ર એક ક્લિક</b> કરો, લખાણ ઓટોમેટીક કૉપિ (Copy) થઈ જશે!
+    </div>
+    
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>ક્રમ</th>
+                    <th>અહેવાલ મુદ્દાઓ</th>
+                    <th>ઉત્તમ કામગીરી</th>
+                    <th>ઘણી સારી કામગીરી</th>
+                    <th>સારી કામગીરી</th>
+                    <th>ઠીક કામગીરી</th>
+                    <th>સરેરાશથી ઓછી કામગીરી</th>
+                    <th>નબળી કામગીરી</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>નિયમિતતા અને સમય પાલન</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>અતિ-ઉત્તમ: શાળામાં ચોક્કસ સમયે આવવું-જવું પ્રાર્થનામાં નિયમિત અને પોતાના વર્ગખંડમાં સમયસર હાજરી.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>ઘણી સારી: સમયપાલન અને હાજરીમાં નિયમિત, શાળા સમયનું ચોકસાઈપૂર્વક પાલન.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>સારી: સમયપાલન અને હાજરીમાં નિયમિતતા જાળવે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>ઠીક: ક્યારેક સમયપાલનમાં અસ્વસ્થતા/અનિયમિતતા, હાજરી મધ્યમ.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>સરેરાશથી ઓછી: શાળાએ આવવા-જવામાં વારંવાર મોડા પડવું અને અનિયમિતતા.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>નબળી: સમયપાલનનો સંપૂર્ણ અભાવ, વારંવાર બિનાકારણે ગેરહાજરી અને અનિયમિતતા.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>શીખવવાની પદ્ધતિ, શૈક્ષણિક સાધનોનો ઉપયોગ, વર્ગ પ્રભુત્વ અને લેખન ચકાસણી</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>આધુનિક અને પ્રવૃત્તિલક્ષી અધ્યાપન પદ્ધતિનો ઉપયોગ કરે છે. અધ્યતન શૈક્ષણિક સાધનો (TLM) અને ડિજિટલ માધ્યમોનો મહત્તમ ઉપયોગ કરે છે. વર્ગખંડ પર પૂર્ણ પ્રભુત્વ ધરાવે છે અને ગૃહકાર્ય તથા લેખનકાર્યની દરરોજ ચોકસાઈપૂર્વક ચકાસણી કરે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વૈવિધ્યસભર પદ્ધતિઓ અને શૈક્ષણિક સાધનોનો નિયમિત ઉપયોગ કરે છે. વર્ગ વ્યવસ્થા સારી જાળવે છે અને લેખનકાર્યની સમયસર ચકાસણી કરે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>સામાન્ય અને પરંપરાગત શૈક્ષણિક સાધનોનો ઉપયોગ કરે છે. વર્ગ નિયંત્રણ સારું છે અને લેખન ચકાસણી નિયમિતપણે કરે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>શૈક્ષણિક સાધનોનો ઉપયોગ મર્યાદિત પ્રમાણમાં કરે છે. વર્ગ પ્રભુત્વ મધ્યમ છે અને લેખન ચકાસણી ક્યારેક બાકી રહી જાય છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>માત્ર પરંપરાગત પદ્ધતિથી ભણાવે છે, TLM નો ઉપયોગ કરતા નથી. વર્ગ પર કાબૂ ઓછો છે અને લેખન ચકાસણીમાં અનિયમિતતા જણાય છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>પૂર્વ આયોજન વગરનું અધ્યાપન છે. શૈક્ષણિક સાધનોનો બિલકુલ ઉપયોગ કરતા નથી. વર્ગમાં અશિસ્ત જોવા મળે છે અને લેખન ચકાસણીનું કાર્ય અપૂર્ણ રહે છે.</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>રીતભાત તથા બાળકો સાથેનો વર્તન</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>બાળકો પ્રત્યે અત્યંત પ્રેમળ, ઉત્સાહવર્ધક, ધીરજપૂર્વકનું અને પ્રેરણાદાયી વર્તન રાખે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>બાળકો સાથે સહાનુભૂતિપૂર્વકનું, પ્રેમળ અને પ્રોત્સાહક વર્તન રાખે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>બાળકો સાથે યોગ્ય અને સંતોષકારક વર્તન રાખે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>બાળકો સાથેનું વર્તન ઠીક-ઠીક છે; વધુ આત્મીયતા દાખવવાની જરૂર છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>બાળકો પ્રત્યે ઉદાસીનતા અને ક્યારેક કઠોર વર્તન જોવા મળે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>બાળકો પ્રત્યે ઉપેક્ષાપૂર્ણ અને અનુચિત વર્તન રહે છે.</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>સાથી શિક્ષકો સાથેનો સંબંધ</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>સાથી શિક્ષકો સાથે પરસ્પર આદર, સહયોગ અને ટીમવર્કની ઉત્તમ ભૌતિક ભાવના ધરાવે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>સાથી શિક્ષકો સાથે હાર્દિક અને સહયોગાત્મક સંબંધો ધરાવે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>સાથી શિક્ષકો સાથે સામાન્ય અને સારા સંબંધો જાળવી રાખે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>સાથી શિક્ષકો સાથે માત્ર કામ પૂરતો જ સંબંધ રાખે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>સાથી શિક્ષકો સાથે વારંવાર મતભેદ થાય છે અને સહયોગનો અભાવ રહે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>સાથી શિક્ષકો સાથે અસહકાર અને નકારાત્મક વલણ ધરાવે છે.</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>કઈ શૈક્ષણિક પ્રવૃત્તિમાં ભાગ લીધો? શી કામગીરી કરી?</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>શાળા, તાલુકા અને જિલ્લા કક્ષાના બાલમેળા, વિજ્ઞાન પ્રદર્શન અને સાંસ્કૃતિક પ્રવૃત્તિઓમાં સક્રિય ભાગ લઈ મુખ્ય આયોજક તરીકે ઉત્કૃષ્ટ કામગીરી કરી.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>શાળા કક્ષાની તમામ શૈક્ષણિક અને સહ-અભ્યાસિક પ્રવૃત્તિઓમાં સક્રિયપણે ભાગ લઈ સારી જવાબદારી નિભાવી.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>શાળા આયોજિત પ્રવૃત્તિઓ અને ઉત્સવોમાં યોગ્ય સહભાગીદારી નોંધાવી.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>શાળાની શૈક્ષણિક પ્રવૃત્તિઓમાં સૂચના મળ્યા બાદ જ મર્યાદિત ભાગ લે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>શૈક્ષણિક પ્રવૃત્તિઓમાં ખાસ ઉત્સાહ દર્શાવતા નથી કે ભાગ લેતા નથી.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>શૈક્ષણિક કે સહ-અભ્યાસિક પ્રવૃત્તિઓમાં ભાગ લેવાનું ટાળે છે.</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>આચાર્યને શાળા કાર્યમાં સહકાર</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>શાળાના સર્વાંગી વિકાસ અને વહીવટી કાર્યમાં આચાર્યશ્રીને સાચો, સક્રિય અને અગ્રેસર સહકાર આપે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>આચાર્યશ્રી દ્વારા સોંપવામાં આવેલ તમામ શાળાકીય કાર્યો સમયસર અને સારી રીતે પૂર્ણ કરે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>આચાર્યશ્રીની સૂચના મુજબ શાળાના કાર્યોમાં જરૂરી સહકાર આપે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>આચાર્યશ્રી દ્વારા વારંવાર કહેવામાં આવ્યા બાદ જ કામગીરી પૂર્ણ કરે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>શાળાના વહીવટી કે અન્ય કાર્યોમાં આચાર્યશ્રીને ઓછો સહકાર આપે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>શાળાના કાર્યો અને વિઝનમાં આચાર્યશ્રીને સહકાર આપતા નથી.</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>વિદ્યાર્થીઓને તેમણે કરાવેલ અભ્યાસ કેવો જણાયો</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વિદ્યાર્થીઓને અભ્યાસ અત્યંત રસપ્રદ, સરળ, પ્રેરણાદાયી અને કાયમી યાદ રહી જાય તેવો જણાયો.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વિદ્યાર્થીઓને અભ્યાસ ખૂબ જ રસપ્રદ અને સહેલાઈથી સમજાઈ જાય તેવો જણાયો.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વિદ્યાર્થીઓને અભ્યાસ સરળ અને સમજવા યોગ્ય જણાયો.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વિદ્યાર્થીઓને અભ્યાસ સામાન્ય લાગ્યો, જેમાં રસપ્રદતાનો અભાવ જણાયો.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વિદ્યાર્થીઓને અભ્યાસ કંટાળાજનક અને અસ્પષ્ટ જણાયો.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વિદ્યાર્થીઓને અભ્યાસમાં કોઈ રસ પડતો નથી અને કશું સમજાતું નથી.</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>ગામ લોકો તથા વાલીઓ સાથેનો સહકાર</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વાલીઓ અને ગામલોકો સાથે ઉત્તમ સંપર્ક ધરાવે છે. SMC બેઠકો અને વાલી સંમેલનમાં 100% હાજરી મેળવવામાં સફળ રહે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વાલીઓ સાથે નિયમિત સંપર્ક રાખે છે અને SMC બેઠકોમાં સારા સૂચનો આપે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વાલીઓ સાથે સામાન્ય સંપર્ક જાળવે છે અને જરૂર જણાય ત્યારે સહકાર મેળવે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વાલીઓ સાથેનો સંપર્ક મર્યાદિત છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વાલીઓ સાથે પૂરતો સંપર્ક રાખતા નથી.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વાલીઓ તરફથી શિક્ષકના વર્તન અને ભણાવવા અંગે વારંવાર ફરિયાદો આવે છે.</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>હાજરી અને પરિણામ સુધારવા પગલાં લીધાં હોય તો તેની નોંધ</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>નબળા વિદ્યાર્થીઓ માટે વિશેષ ઉપચારાત્મક શિક્ષણ (Remedial Teaching) આપી વર્ગનું પરિણામ ૯૫% થી વધુ લાવ્યા અને હાજરીમાં નોંધપાત્ર વધારો કર્યો.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>એકમ કસોટીઓ અને વારંવારના પુનરાવર્તન દ્વારા વિદ્યાર્થીઓના પરિણામ અને હાજરીમાં ઘણો સારો સુધારો લાવ્યા.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વિદ્યાર્થીઓને નિયમિત આવવા પ્રોત્સાહિત કરી પરિણામમાં સાધારણ સુધારો લાવ્યા.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>પરિણામ કે હાજરી સુધારવા માટે ખાસ અલગ પ્રયત્નો કરેલા નથી.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>પરિણામ કે હાજરી સુધારવા માટે કોઈ સકારાત્મક પગલાં લીધા નથી.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>કોઈ પગલાં લીધા નથી; પરિણામ ખૂબ જ નબળું રહે છે.</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>બાળકોની પ્રવેશ સંખ્યા વધારવાની દિશામાં શિક્ષકે કરેલા પ્રયત્નોની નોંધ</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>પ્રવેશ ઉત્સવ અને શેરી સંપર્ક દ્વારા ગામના તમામ પ્રવેશપાત્ર બાળકોનું શાળામાં ૧૦૦% નામાંકન કરાવ્યું.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વાલીઓનું કાઉન્સેલિંગ કરીને પ્રવેશ સંખ્યા વધારવામાં સારો સહયોગ આપ્યો.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>શાળાના પ્રવેશ અંક વધારવાની ઝુંબેશમાં સંતોષકારક ભાગ લીધો.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>નવી પ્રવેશ સંખ્યા વધારવામાં સામાન્ય સહયોગ આપ્યો.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>પ્રવેશ ઝુંબેશમાં શિક્ષક તરફથી ખાસ પ્રયત્નો દેખાયા નથી.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>પ્રવેશ સંખ્યા વધારવા માટે કોઈ પ્રયત્ન કરેલ નથી.</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>વર્ગ કામની સમીક્ષા</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વર્ગકાર્ય અત્યંત આયોજનબદ્ધ, અસરકારક અને આદર્શ છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વર્ગકાર્ય ઘણું સારું અને સુવ્યવસ્થિત છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વર્ગકાર્ય સારું અને સંતોષકારક છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વર્ગકાર્ય ઠીક-ઠીક છે, જેમાં સુધારાની ગુંજાશ છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વર્ગકાર્ય સરેરાશથી ઓછું છે અને તાકીદે સુધારાની જરૂર છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>વર્ગકાર્ય અત્યંત નબળું અને અસંતોષકારક છે.</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>સામાન્ય: (કાર્યાનુભવ, શિક્ષણ અંગેની અન્ય કામગીરી, ખાતાકીય સૂચનાઓનું પાલન ઇત્યાદિ)</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>ખાતાકીય તમામ સૂચનાઓનું સમયસર અને અક્ષરશઃ પાલન કરે છે તથા કાર્યાનુભવ અને અન્ય સહ-અભ્યાસિક પ્રવૃત્તિઓમાં વિશેષ યોગદાન આપે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>ખાતાકીય સૂચનાઓનું નિયમિતપણે પાલન કરે છે અને સોંપાયેલ વધારાની કામગીરી સારી રીતે પૂર્ણ કરે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>ખાતાકીય નિયમો અને સોંપાયેલી કામગીરીનું સામાન્ય રીતે પાલન કરે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>ખાતાકીય સૂચનાઓનું સામાન્ય પાલન કરે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>ખાતાકીય સૂચનાઓનું પાલન કરવામાં વિલંબ કરે છે.</td>
+                    <td class='copyable' title='કૉપિ કરવા અહીં ક્લિક કરો'>ખાતાકીય સૂચનાઓનું અનાદર અને કામગીરીમાં ભારે બેદરકારી જોવા મળે છે.</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    
+    <div id="toast">✅ લખાણ કૉપિ થઈ ગયું!</div>
+
+    <script>
+        function copyText(element) {
+            const textToCopy = element.innerText || element.textContent;
+            
+            // Clipboard API (Modern browsers)
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(textToCopy).then(() => showToast()).catch(err => fallbackCopyText(textToCopy));
+            } else {
+                fallbackCopyText(textToCopy);
+            }
+        }
+
+        function fallbackCopyText(text) {
+            let textArea = document.createElement("textarea");
+            textArea.value = text;
+            // Prevent scrolling to bottom
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast();
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function showToast() {
+            const toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 2500);
+        }
+
+        // Event Listeners
+        document.querySelectorAll('.copyable').forEach(cell => {
+            cell.addEventListener('click', function() {
+                copyText(this);
+            });
+        });
+    </script>
+</body>
+</html>
