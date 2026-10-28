@@ -4,44 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ખાનગી અહેવાલ મુદ્દા</title>
+    <title>ખાનગી અહેવાલ મુદ્દા - Parabatbhai Karmur</title>
     <style>
         :root {
             --primary-color: #0056b3;
             --bg-color: #f4f7f6;
-            --hover-color: #e3f2fd;
-            --active-color: #bbdefb;
+            --hover-bg: #f1f8ff;
         }
         
         * { box-sizing: border-box; }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Shruti', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             background-color: var(--bg-color);
             color: #333;
-        }
-
-        /* Ticker (Marquee) Styling */
-        .ticker-wrap {
-            width: 100%;
-            background-color: #2c3e50;
-            color: #f1c40f;
-            padding: 8px 0;
-            overflow: hidden;
-            white-space: nowrap;
-            font-size: 16px;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .ticker-text {
-            display: inline-block;
-            padding-left: 100%;
-            animation: ticker 20s linear infinite;
-        }
-        @keyframes ticker {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-100%, 0, 0); }
         }
 
         .header-container {
@@ -49,51 +26,88 @@
             padding: 15px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
         }
         
-        h2 { margin: 0; color: var(--primary-color); font-size: 24px; }
+        h2 { margin: 0; color: var(--primary-color); font-size: 26px; font-weight: bold; }
         
         .instructions {
             text-align: center;
-            padding: 12px;
-            font-size: 15px;
+            padding: 15px;
+            font-size: 16px;
             color: #155724;
             background-color: #d4edda;
-            border: 1px solid #c3e6cb;
+            border: 2px dashed #28a745;
             margin: 15px auto;
             border-radius: 8px;
             width: 95%;
             max-width: 800px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            font-weight: bold;
+        }
+
+        /* Ticker (Marquee) Styling - Sticky and Blinking */
+        .ticker-wrap {
+            width: 100%;
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 18px;
+            font-weight: 900;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border-top: 3px solid #ffc107;
+            border-bottom: 3px solid #ffc107;
+            position: sticky;
+            top: 0;
+            z-index: 1000; /* Stays on top while scrolling */
+        }
+        
+        .ticker-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 22s linear infinite;
+        }
+        
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        .blinking-highlight {
+            color: #d32f2f;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            animation: text-blink 0.6s infinite alternate;
+        }
+
+        @keyframes text-blink {
+            0% { opacity: 1; text-shadow: 0 0 10px #ff0000; }
+            100% { opacity: 0.6; text-shadow: none; }
         }
 
         .table-responsive {
-            width: 95%;
-            margin: 0 auto 30px auto;
+            width: 98%;
+            margin: 20px auto 30px auto;
             overflow-x: auto;
             background: white;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            /* Smooth scrolling for mobile */
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
             -webkit-overflow-scrolling: touch; 
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 900px;
+            min-width: 1000px;
         }
         
         th, td {
             border: 1px solid #dee2e6;
-            padding: 12px 15px;
+            padding: 15px;
             text-align: left;
             vertical-align: top;
             line-height: 1.6;
-            font-size: 15px;
+            font-size: 16px;
         }
         
         th {
@@ -101,10 +115,19 @@
             color: white;
             text-align: center;
             white-space: nowrap;
+            font-size: 17px;
         }
         
         td:first-child { text-align: center; font-weight: bold; background-color: #f8f9fa; }
         td:nth-child(2) { font-weight: bold; background-color: #f8f9fa; min-width: 150px; }
+
+        /* Colorful Fonts for Columns */
+        td:nth-child(3) { color: #00796b; font-weight: 600; } /* ઉત્તમ */
+        td:nth-child(4) { color: #1976d2; font-weight: 600; } /* ઘણી સારી */
+        td:nth-child(5) { color: #f57c00; font-weight: 600; } /* સારી */
+        td:nth-child(6) { color: #6a1b9a; font-weight: 600; } /* ઠીક */
+        td:nth-child(7) { color: #c2185b; font-weight: 600; } /* સરેરાશથી ઓછી */
+        td:nth-child(8) { color: #d32f2f; font-weight: 600; } /* નબળી */
 
         /* One-Click Copy Styling */
         .copyable {
@@ -114,34 +137,34 @@
         }
         
         .copyable:hover {
-            background-color: var(--hover-color);
-            transform: scale(1.01);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: var(--hover-bg);
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
             z-index: 10;
+            border-radius: 4px;
         }
         
         .copyable:active {
-            background-color: var(--active-color);
             transform: scale(0.98);
         }
 
         /* Toast Notification Styling */
         #toast {
             visibility: hidden;
-            min-width: 250px;
-            margin-left: -125px;
+            min-width: 280px;
+            margin-left: -140px;
             background-color: #28a745;
             color: #fff;
             text-align: center;
             border-radius: 50px;
-            padding: 14px;
+            padding: 16px;
             position: fixed;
-            z-index: 1000;
+            z-index: 2000;
             left: 50%;
             bottom: 30px;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
             opacity: 0;
             transition: opacity 0.3s, bottom 0.3s;
         }
@@ -149,25 +172,36 @@
         #toast.show {
             visibility: visible;
             opacity: 1;
-            bottom: 50px;
+            bottom: 60px;
+        }
+
+        /* Tracker Section */
+        .tracker-section {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
         }
         
-        /* Tap highlight color removal for mobile */
+        .tracker-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
         * { -webkit-tap-highlight-color: transparent; }
 
         @media screen and (max-width: 600px) {
-            h2 { font-size: 20px; }
-            .instructions { font-size: 14px; padding: 10px; width: 90%; }
-            th, td { padding: 10px; font-size: 14px; }
-            .ticker-wrap { font-size: 14px; }
+            h2 { font-size: 22px; }
+            .instructions { font-size: 15px; padding: 12px; }
+            th, td { padding: 12px; font-size: 15px; }
+            .ticker-wrap { font-size: 16px; padding: 10px 0; }
         }
     </style>
 </head>
 <body>
-
-    <div class="ticker-wrap">
-        <div class="ticker-text">સૌજન્ય : પરબતભાઈ કરમુર - શ્રી કોરાડા વાડી પ્રાથમિક શાળા.</div>
-    </div>
 
     <div class="header-container">
         <h2>ખાનગી અહેવાલ મુદ્દા</h2>
@@ -175,6 +209,13 @@
 
     <div class="instructions">
         ✨ <strong>સૂચના:</strong> નીચેના કોઈપણ લખાણ (બોક્સ) પર <b>માત્ર એક ક્લિક</b> કરો, લખાણ ઓટોમેટીક કૉપિ (Copy) થઈ જશે!
+    </div>
+
+    <!-- Ticker (Marquee) - Sticky below instructions -->
+    <div class="ticker-wrap">
+        <div class="ticker-text">
+            <span class="blinking-highlight">★ સૌજન્ય : પરબતભાઈ કરમુર - શ્રી કોરાડા વાડી પ્રાથમિક શાળા ★</span>
+        </div>
     </div>
     
     <div class="table-responsive">
@@ -316,38 +357,65 @@
             </tbody>
         </table>
     </div>
+
+    <!-- Tracker Section -->
+    <div class="tracker-section">
+        <div class="tracker-text">આ પેજનો કુલ ઉપયોગ:</div>
+        <img src="https://api.visitorbadge.io/api/visitors?path=parabatbhai.karmur.aheval.app&countColor=%2328a745" alt="Visitor Count" />
+    </div>
     
-    <div id="toast">✅ લખાણ કૉપિ થઈ ગયું!</div>
+    <div id="toast">✅ શ્રુતિ ફોન્ટમાં કૉપિ થઈ ગયું!</div>
 
     <script>
         function copyText(element) {
             const textToCopy = element.innerText || element.textContent;
             
-            // Clipboard API (Modern browsers)
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(textToCopy).then(() => showToast()).catch(err => fallbackCopyText(textToCopy));
+            // Format copied text explicitly with Shruti font and black color 
+            // so it pastes perfectly into MS Word/Excel without taking the website's colorful design.
+            const htmlToCopy = `<span style="font-family: 'Shruti', 'Gujarati MT', sans-serif; font-size: 12pt; color: #000000;">${textToCopy}</span>`;
+
+            if (navigator.clipboard && window.ClipboardItem) {
+                const textBlob = new Blob([textToCopy], {type: 'text/plain'});
+                const htmlBlob = new Blob([htmlToCopy], {type: 'text/html'});
+                
+                try {
+                    const clipboardItem = new ClipboardItem({
+                        'text/plain': textBlob,
+                        'text/html': htmlBlob
+                    });
+                    navigator.clipboard.write([clipboardItem]).then(showToast).catch(() => fallbackCopyHtml(htmlToCopy, textToCopy));
+                } catch(e) {
+                    fallbackCopyHtml(htmlToCopy, textToCopy);
+                }
             } else {
-                fallbackCopyText(textToCopy);
+                fallbackCopyHtml(htmlToCopy, textToCopy);
             }
         }
 
-        function fallbackCopyText(text) {
-            let textArea = document.createElement("textarea");
-            textArea.value = text;
-            // Prevent scrolling to bottom
-            textArea.style.position = "fixed";
-            textArea.style.left = "-999999px";
-            textArea.style.top = "-999999px";
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
+        // Advanced Fallback to ensure HTML formatting is copied even on older browsers
+        function fallbackCopyHtml(html, plainText) {
+            const div = document.createElement("div");
+            div.innerHTML = html;
+            div.style.position = "fixed";
+            div.style.left = "-999999px";
+            div.style.top = "-999999px";
+            document.body.appendChild(div);
+
+            const range = document.createRange();
+            range.selectNodeContents(div);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+
             try {
                 document.execCommand('copy');
                 showToast();
             } catch (err) {
-                console.error('Fallback: Oops, unable to copy', err);
+                console.error('Fallback copy failed', err);
             }
-            document.body.removeChild(textArea);
+
+            sel.removeAllRanges();
+            document.body.removeChild(div);
         }
 
         function showToast() {
@@ -356,7 +424,7 @@
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 2500);
         }
 
-        // Event Listeners
+        // Event Listeners for all copyable cells
         document.querySelectorAll('.copyable').forEach(cell => {
             cell.addEventListener('click', function() {
                 copyText(this);
